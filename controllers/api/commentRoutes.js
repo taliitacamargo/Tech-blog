@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { Review } = require("../../models");
-const withAuth = require("../../utils/auth");
+const { Comment } = require("../../models");
+
 
 
 router.get("/", async, (req, res) => {
@@ -18,13 +18,16 @@ router.get("/", async, (req, res) => {
 
 router.post("/", async, (req, res) => {
     try {
-        const commentData = await Comment.create({...req.body,
-        user_id : req.sessions.user_id,});
-
+        const commentData = await Comment.create({
+            ...req.body,
+            user_id: req.sessions.user_id,
+            post_id: req.params.id
+        });
+        res.status(200).json(commentData);
     }
+    catch (err) {
+        res.status(400).json(err);
+    }
+});
 
-})
-
-// router.get ("/", async, (req, res) => {
-
-// })
+module.exports = router
