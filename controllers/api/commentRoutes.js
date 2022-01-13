@@ -3,7 +3,7 @@ const { Comment } = require("../../models");
 
 
 
-router.get("/", async, (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const commentData = await Comment.findAll();
 
@@ -16,7 +16,7 @@ router.get("/", async, (req, res) => {
     }
 });
 
-router.post("/", async, (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const commentData = await Comment.create({
             ...req.body,
