@@ -36,7 +36,7 @@ Posts.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'posts',
+        modelName: 'post',
       }
     );
     

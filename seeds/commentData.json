@@ -1,0 +1,21 @@
+[
+    {
+    
+        "description": "It's a nice day.",
+        "post_id": 1
+
+    },
+    {
+    
+        "description": "It's a bad day.",
+        "post_id": 2
+
+    },
+    {
+    
+        "description": "It's an okay day.",
+        "post_id": 3
+
+    }
+
+]
