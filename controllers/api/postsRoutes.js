@@ -30,6 +30,28 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
+router.get("/:id", async (req, res) => {
+    try {
+        const postData = await Posts.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+            ],
+        });
+        const allPosts = postData.get({ plain: true });
+
+        res.render('one-post', {
+            ...allPosts,
+            logged_in: req.session.logged_in
+        });
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const deletePost = await Posts.destroy({

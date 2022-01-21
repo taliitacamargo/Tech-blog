@@ -1,0 +1,21 @@
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      <a href="/posts/{{post.id}}">{{post.name}}</a>
+    </h2>
+
+    <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+     {{post.description}}
+    </p>
+    <div class="col-md-4">
+        <button class=" project-list btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+        <br>
+      </div>
+  </div>
+</div>
+
+<script src= "/js/deletePost.js"></script>

@@ -26,7 +26,7 @@ const sess = {
 
 app.use(session(sess));
 
-app.engine('jandlebars', hbs.engine);
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
