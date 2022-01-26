@@ -36,7 +36,7 @@ router.get('/post/:id', async (req, res) => {
         });
         const allPosts = postData.get({ plain: true });
 
-        res.render('posts', {
+        res.render('post', {
             ...allPosts,
             logged_in: req.session.logged_in
         });
