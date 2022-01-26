@@ -1,7 +1,9 @@
 const router = require('express').Router();
-const { Posts } = require('../../models');
+const { Posts, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+
+// gets all posts if no projects then status 400.
 router.get('/', async (req, res) => {
     try {
         const getPosts = await Posts.findAll();
@@ -17,9 +19,9 @@ router.get('/', async (req, res) => {
     }
 });
 
+// creates post.
 router.post('/', withAuth, async (req, res) => {
     try {
-
         const newPost = await Posts.create({
             ...req.body,
             user_id: req.session.user_id,
@@ -33,6 +35,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
+// gets post by id
 router.get("/:id", async (req, res) => {
     try {
         const postData = await Posts.findByPk(req.params.id, {
@@ -55,6 +58,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+// deletes post by id
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const deletePost = await Posts.destroy({
@@ -74,6 +78,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 });
 
+// updates post by id
 router.put('/:id', withAuth, async (req, res) => {
     try {
         const newPost = await Post.update(req.body, {
