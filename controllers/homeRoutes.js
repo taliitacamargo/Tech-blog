@@ -7,14 +7,15 @@ router.get("/", async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    attributes: ['name'], 
                 },
             ],
         });
         const allPosts = postData.map((post) => post.get({ plain: true }));
+        console.log(allPosts);
         res.render("homepage", {
-            allPosts,
-            logged_in: req.session.logged_in
+            ...allPosts 
+            // logged_in: req.session.logged_in
         });
     }
     catch (err) {
