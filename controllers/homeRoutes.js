@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
 })
 
 
-router.get('/post/:id', async (req, res) => {
+router.get('/posts/:id', async (req, res) => {
 
     try {
         const postData = await Posts.findByPk(req.params.id, {
@@ -33,12 +33,29 @@ router.get('/post/:id', async (req, res) => {
                     model: User,
                     attributes: ['name'],
                 },
+                {
+                    model: Comment,
+                    attributes: [
+                        "description",
+                    ],
+                    include: [
+                        {
+                            model: User,
+                            attributes: [
+                                "name"
+                            ]
+                        }
+                    ]
+                }
             ],
+            attributes: [
+                "name", "description"
+            ]
         });
-        const allPosts = postData.get({ plain: true });
-        console.log(allPosts)
+        const post = postData.get({ plain: true });
+        console.log(` ${post}`)
         res.render('post', {
-            allPosts,
+            post,
             logged_in: req.session.logged_in
         });
     }

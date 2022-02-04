@@ -32,7 +32,7 @@ router.get("/edit/:id", withAuth, async (req, res) => {
             plain: true
         })
         console.log(post);
-        res.render("post", {
+        res.render("edit", {
             post,
             logged_in: req.session.logged_in
         })
