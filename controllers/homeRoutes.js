@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'], 
+                    attributes: ['name'],
                 },
             ],
         });
@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
 })
 
 
-router.get('/posts/:id', async (req, res) => {
+router.get('/post/:id', async (req, res) => {
 
     try {
         const postData = await Posts.findByPk(req.params.id, {
@@ -33,6 +33,7 @@ router.get('/posts/:id', async (req, res) => {
                     model: User,
                     attributes: ['name'],
                 },
+                // to add comments to posts
                 {
                     model: Comment,
                     attributes: [
@@ -43,15 +44,19 @@ router.get('/posts/:id', async (req, res) => {
                             model: User,
                             attributes: [
                                 "name"
-                            ]
+                            ],
                         }
-                    ]
+                    ],
                 }
             ],
             attributes: [
                 "name", "description"
-            ]
+            ],
+        
         });
+        if (!postData) {
+         res.status(404).json(`No posts with this id ${req.params.id}`)       
+        }
         const post = postData.get({ plain: true });
         console.log(` ${post}`)
         res.render('post', {
@@ -65,8 +70,8 @@ router.get('/posts/:id', async (req, res) => {
 });
 
 
-    //get post by id
-    //render post.handlebars file with that post
+//get post by id
+//render post.handlebars file with that post
 
 
 router.get("/login", async (req, res) => {
