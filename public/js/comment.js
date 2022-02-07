@@ -20,6 +20,8 @@ const AddComment = async (event) => {
     }
 };
 
+
+
 document
     .querySelector('.save')
     .addEventListener('submit', AddComment);
