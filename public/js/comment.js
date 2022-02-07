@@ -3,7 +3,6 @@ const AddComment = async (event) => {
     const description = document.querySelector('#project-desc').value.trim();
 
     if (description) {
-        console.log(window.location.pathname.split("/").pop())
         const response = await fetch(`/api/posts/${id}`, {
             method: 'POST',
             body: JSON.stringify({ description }),
