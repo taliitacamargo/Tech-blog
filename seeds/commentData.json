@@ -1,21 +1,18 @@
 [
     {
-    
+        "name": "Nikki",
         "description": "It's a nice day.",
         "post_id": 1
-
     },
     {
-    
+        "name": "Arthur",
         "description": "It's a bad day.",
         "post_id": 2
-
     },
     {
-    
+        "name": "Maria",
         "description": "It's an okay day.",
         "post_id": 3
-
     }
 
 ]

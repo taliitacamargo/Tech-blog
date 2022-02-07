@@ -2,16 +2,43 @@
   <div class="col-md-5">
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      <a href="/posts/{{post.id}}">{{post.name}}</a>
+      {{post.name}}
     </h2>
 
     <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
   </div>
   <div class="col-md-7">
     <p>
-     {{post.description}}
+      {{post.description}}
     </p>
+
+    {{#each post.comments as | comment | }}
+
+    <div>
+      <h6>Comments</h6>
+      <p>
+      <div>
+        {{comment.description}}
+        <p>
+        <small>-{{comment.name}}</small>
+      </div>
+    </div>
+
+    {{/each}}
+    
+    <form class="form new-project-form save">
+
+      <div class="form-group">
+        <label for="project-desc">Comment:</label>
+        <textarea class="form-input" id="project-desc" data-post-id="{{post.id}}" name="project-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
   </div>
 </div>
 
-
+<script src="../public/js/comment.js"></script>
+{{!-- add event listener to add comment (button) (create new frontend js for comment--}}
+{{!-- set user and post id in the routes --}}

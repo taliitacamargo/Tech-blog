@@ -1,13 +1,12 @@
-const editBtnHandler = async (event) => {
+const AddComment = async (event) => {
     event.preventDefault()
-    const name = document.querySelector('#project-name').value.trim();
     const description = document.querySelector('#project-desc').value.trim();
 
-    if (name && description) {
+    if (description) {
         console.log(window.location.pathname.split("/").pop())
-        const response = await fetch(`/api/posts/${window.location.pathname.split("/").pop()}`, {
-            method: 'PUT',
-            body: JSON.stringify({ name, description }),
+        const response = await fetch(`/api/posts/${id}`, {
+            method: 'POST',
+            body: JSON.stringify({ description }),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -17,12 +16,11 @@ const editBtnHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed to create project');
+            alert('Failed to create comment');
         }
     }
 };
 
-
 document
     .querySelector('.save')
-    .addEventListener('submit', editBtnHandler);
+    .addEventListener('submit', AddComment);

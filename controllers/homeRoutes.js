@@ -37,7 +37,7 @@ router.get('/post/:id', async (req, res) => {
                 {
                     model: Comment,
                     attributes: [
-                        "description",
+                        "description", "name"
                     ],
                     include: [
                         {
@@ -50,7 +50,7 @@ router.get('/post/:id', async (req, res) => {
                 }
             ],
             attributes: [
-                "name", "description"
+                "name", "description", "date_created", "id",
             ],
         
         });
@@ -58,6 +58,7 @@ router.get('/post/:id', async (req, res) => {
          res.status(404).json(`No posts with this id ${req.params.id}`)       
         }
         const post = postData.get({ plain: true });
+        
         console.log(` ${post}`)
         res.render('post', {
             post,
