@@ -1,4 +1,5 @@
 # Tech-blog
+![Tech Blog](https://user-images.githubusercontent.com/88398240/153058134-6c2c3bff-44a2-4b0a-bff7-550ae5ee4459.jpg)
 
 GIVEN a CMS-style blog site
 WHEN I visit the site for the first time
