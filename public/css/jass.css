@@ -28,6 +28,24 @@ main {
   display: block;
 }
 
+.comment-container,
+.postStyle {
+  background-color: #dbd7d7;
+  border-radius: 5px;
+  padding: 7px
+ 
+}
+
+.comment,
+.desc {
+  background-color:white;
+  border-radius: 5px;
+  padding: 20px;
+  
+}
+
+
+
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.

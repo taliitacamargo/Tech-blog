@@ -1,26 +1,25 @@
 <div class="row mb-4 project">
-  <div class="col-md-5">
+  <div class="col-md-5 postStyle inner-container">
     <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
       {{post.name}}
     </h2>
-
-    <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
+    <div class="desc">
+      <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
+      <p>{{post.description}}</p>
+    </div>
   </div>
-  <div class="col-md-7">
-    <p>
-      {{post.description}}
-    </p>
- <h6>Comments</h6>
+  
+  <div class="col-md-7 ">
+    <h6>Comments</h6>
     {{#each post.comments as | comment | }}
-
-    <div>
-      <p>
-      <div>
+    <div class="comment-container">
+      </br>
+      <div class="comment">
         {{comment.description}}
-        <p>
-        <small>-{{comment.name}}</small>
+        </br>
       </div>
+      <small>-{{comment.user.name}}</small>
+
     </div>
 
     {{/each}}
