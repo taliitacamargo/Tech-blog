@@ -32,8 +32,8 @@ main {
 .postStyle {
   background-color: #dbd7d7;
   border-radius: 5px;
-  padding: 7px
- 
+  padding: 7px;
+ margin: 2px;
 }
 
 .comment,
